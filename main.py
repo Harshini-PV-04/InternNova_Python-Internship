@@ -42,10 +42,12 @@ class Student(Person):
 
     # Setter method
     def set_marks(self, marks):
-        if 0 <= marks <= 100:
-            self.__marks = marks
-        else:
-            print("Marks must be between 0 and 100.")
+     if 0 <= marks <= 100:
+        self.__marks = marks
+        return True
+     else:
+        print("Marks must be between 0 and 100.")
+        return False
 
     # Method
     def display_role(self):
@@ -193,9 +195,8 @@ class StudentManagementSystem:
 
                 marks = float(input("Enter new marks: "))
 
-                self.students[student_id].set_marks(marks)
-
-                print("Marks updated successfully.")
+                if self.students[student_id].set_marks(marks):
+                 print("Marks updated successfully.")
 
             else:
                 print("Student not found.")
